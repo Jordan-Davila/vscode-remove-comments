@@ -46,7 +46,7 @@ export class Parser {
                             let range = new vscode.Range(startPos, endPos);
                             this.edit.delete(this.uri, range);
                         }
-                        
+
                         matched = true;
                     }
                 }
@@ -62,7 +62,7 @@ export class Parser {
 
         let text = activeEditor.document.getText();
         let uri = activeEditor.document.uri;
-        let regEx: RegExp = /(^|[ \t])(\/\*[^*])+([\s\S]*?)(\*\/)/gm;
+        let regEx = /\/\*.*?\*\/\s*|\/\/.*?\n\s*/gs;
         let match: any;
 
         while (match = regEx.exec(text)) {
